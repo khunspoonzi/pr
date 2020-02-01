@@ -55,7 +55,7 @@ pr("Hello world")
 ```
 
 ```
-Hello word
+Hello world
 ```
 
 ### Printing an Empty String

@@ -64,6 +64,8 @@ def pr(
     r: bool = False,  # row
     p: int = 20,  # padding
     a: str = "left",  # alignment
+    sb: bool = False,  # status box
+    st: str = "info",  # status type
 ) -> None:
     """ Extends the existing python print function """
 
@@ -196,6 +198,27 @@ def pr(
 
     # Case of no heading
     else:
+
+        # Check if status box argument is True
+        if sb is True:
+
+            # Initialize status box
+            status_box = "[i]"
+
+            # Handle case of success
+            if st in ["s", "success"]:
+
+                # Redefine status box
+                status_box = "[" + GREEN + "\u2714" + RESET + "]"
+
+            # Handle case of fail
+            elif st in ["f", "fail"]:
+
+                # Redefine status box
+                status_box = "[" + RED + "\u2718" + RESET + "]"
+
+            # Add status box to content
+            content = f"{status_box} {content}"
 
         # Handle case of in place printing
         if ip is True:

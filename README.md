@@ -22,10 +22,9 @@ Run `pip3 install pr` in your terminal.
 | :-----: | :---------------------------------------: | :--: | :-----: |
 | content |                  Content                  | str  |   ""    |
 |   lb    | [Lines Before](#using-new-lines-and-tabs) | int  |    0    |
-|    t    |                   Tabs                    | int  |    0    |
-|   la    |                Lines After                | int  |    0    |
-|    c    |                   Color                   | str  |   ""    |
-| content |                  Content                  | str  |   ""    |
+|    t    |     [Tabs](#using-new-lines-and-tabs)     | int  |    0    |
+|   la    | [Lines After](#using-new-lines-and-tabs)  | int  |    0    |
+|    c    |          [Color](#using-colors)           | str  |   ""    |
 |   ip    |                 In Place                  | bool |  False  |
 |    h    |                  Heading                  | bool |  False  |
 |   hr    |              Horizontal Rule              | bool |  False  |
@@ -66,6 +65,18 @@ pr()
 
 ```
 
+Equivalent to:
+
+```
+print("\n")
+```
+
+or
+
+```
+print("")
+```
+
 ### Using New Lines and Tabs
 
 ```
@@ -98,4 +109,46 @@ Equivalent to:
 print(\n\tHello world\n)
 ```
 
+### Using Colors
+
+```
+pr("Hello world", c="r")
+```
+
+> <span style="color:red">Hello world</span>
+
+Where:
+
+- c = desired color of text `str`
+
+Equivalent to:
+
+```
+print(\u001b[31mHello world\u001b[0m)
+```
+
+Accepted colors include:
+
+- Black --> ba, black
+
+- Blue --> bu, blue
+
+- Cyan --> c, cyan
+
+- Green --> g, green
+
+- Magenta --> m, magenta
+
+- Red --> r, red
+
+- White --> w, white
+
+- Yellow --> y, yellow
+
+### Printing In Place
+
+```
+pr("Hello world", lb=1, t=1, la=1)
+
 ---
+```

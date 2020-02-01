@@ -31,9 +31,9 @@ Run `pip3 install pr`
 |   hrc   | [Horizontal Rule Character](#printing-horizontal-rules) |        str        |   "-"   |
 |   hrl   |  [Horizontal Rule Length](#printing-horizontal-rules)   |        int        |   72    |
 |  dhrl   |  [Dynamic Horizontal Rule Length](#printing-headings)   |       bool        |  False  |
-|    r    |                           Row                           |       bool        |  False  |
-|    p    |                         Padding                         |        int        |   20    |
-|    a    |                        Alignment                        |        str        | "left"  |
+|    r    |                [Row](#tabularizing-data)                |       bool        |  False  |
+|    p    |              [Padding](#tabularizing-data)              |        int        |   20    |
+|    a    |             [Alignment](#tabularizing-data)             |        str        | "left"  |
 
 ## Examples
 
@@ -319,8 +319,26 @@ Penny                     | 27                        | Beijing, China          
 Caroline                  | 30                        | Austin, USA               | F
 Diego                     | 24                        | Lima, Peru                | M
 Donny                     | 29                        | La Linea de la Concepci   | M
-​
-
 ```
+
+Where:
+
+- r = indicates whether the content should be treated as a table row `bool`
+
+- h = indicates whether the content should be treated as a table header, i.e. a row with a horizontal rule underneath `bool`
+
+- hrc = desired character used to construct the horizontal rule `str`
+
+- p = desired padding (width) of each column `int`
+
+- a = desired alignment of each table cell `str`
+
+Accepted alignment options include:
+
+- Left --> l, left
+
+- Center --> c, center
+
+- Right --> r, right
 
 ---

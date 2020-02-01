@@ -18,22 +18,22 @@ Run `pip3 install pr` in your terminal.
 
 ## Arguments
 
-|   var   |                   name                    |       type        | default |
-| :-----: | :---------------------------------------: | :---------------: | :-----: |
-| content |                  Content                  | str / list / dict |   ""    |
-|    t    |     [Tabs](#using-new-lines-and-tabs)     |        int        |    0    |
-|   la    | [Lines After](#using-new-lines-and-tabs)  |        int        |    0    |
-|   lb    | [Lines Before](#using-new-lines-and-tabs) |        int        |    0    |
-|    c    |          [Color](#using-colors)           |        str        |   ""    |
-|   ip    |      [In Place](#printing-in-place)       |       bool        |  False  |
-|    h    |       [Heading](#printing-headings)       |       bool        |  False  |
-|   hr    |              Horizontal Rule              |       bool        |  False  |
-|   hrc   |         Horizontal Rule Character         |        str        |   "-"   |
-|   hrl   |          Horizontal Rule Length           |        int        |   72    |
-|  dhrl   |      Dynamic Horizontal Rule Length       |       bool        |  False  |
-|    r    |                    Row                    |       bool        |  False  |
-|    p    |                  Padding                  |        int        |   20    |
-|    a    |                 Alignment                 |        str        | "left"  |
+|   var   |                          name                           |       type        | default |
+| :-----: | :-----------------------------------------------------: | :---------------: | :-----: |
+| content |                         Content                         | str / list / dict |   ""    |
+|    t    |            [Tabs](#using-new-lines-and-tabs)            |        int        |    0    |
+|   la    |        [Lines After](#using-new-lines-and-tabs)         |        int        |    0    |
+|   lb    |        [Lines Before](#using-new-lines-and-tabs)        |        int        |    0    |
+|    c    |                 [Color](#using-colors)                  |        str        |   ""    |
+|   ip    |             [In Place](#printing-in-place)              |       bool        |  False  |
+|    h    |              [Heading](#printing-headings)              |       bool        |  False  |
+|   hr    |      [Horizontal Rule](#printing-horizontal-rules)      |       bool        |  False  |
+|   hrc   | [Horizontal Rule Character](#printing-horizontal-rules) |        str        |   "-"   |
+|   hrl   |  [Horizontal Rule Length](#printing-horizontal-rules)   |        int        |   72    |
+|  dhrl   |  [Dynamic Horizontal Rule Length]](#printing-headings)  |       bool        |  False  |
+|    r    |                           Row                           |       bool        |  False  |
+|    p    |                         Padding                         |        int        |   20    |
+|    a    |                        Alignment                        |        str        | "left"  |
 
 ## Examples
 
@@ -214,7 +214,7 @@ Where:
 
 - hrl = desired length of horizontal rule above and below the heading string `int`
 
-- dhrl indicates whether the length of the horizontal rule above and below the heading string should be dynamic, i.e. match the length of the content `bool`
+- dhrl = indicates whether the length of the horizontal rule above and below the heading string should be dynamic, i.e. match the length of the content `bool`
 
 Equivalent to:
 
@@ -237,6 +237,42 @@ length = len(content) + 1
 print("-" * length)
 print(content)
 print("-" * length)
+```
+
+### Printing Horizontal Rules
+
+```
+pr(hr=True)
+```
+
+```
+------------------------------------------------------------------------
+```
+
+```
+pr(hr=True, hrl=20, hrc="=")
+```
+
+```
+====================
+```
+
+Where:
+
+- hr = indicates whether to print a horizontal rule `bool`
+
+- hrl = desired length of horizontal rule `int`
+
+- hrc = desired character used to construct the horizontal rule `str`
+
+Equivalent to:
+
+```
+print("-" * 72)
+```
+
+```
+print("=" * 20)
 ```
 
 ---

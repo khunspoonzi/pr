@@ -18,22 +18,22 @@ Run `pip3 install pr` in your terminal.
 
 ## Arguments
 
-|   var   |                   name                    | type | default |
-| :-----: | :---------------------------------------: | :--: | :-----: |
-| content |                  Content                  | str  |   ""    |
-|   lb    | [Lines Before](#using-new-lines-and-tabs) | int  |    0    |
-|    t    |     [Tabs](#using-new-lines-and-tabs)     | int  |    0    |
-|   la    | [Lines After](#using-new-lines-and-tabs)  | int  |    0    |
-|    c    |          [Color](#using-colors)           | str  |   ""    |
-|   ip    |                 In Place                  | bool |  False  |
-|    h    |                  Heading                  | bool |  False  |
-|   hr    |              Horizontal Rule              | bool |  False  |
-|   hrc   |         Horizontal Rule Character         | str  |   "-"   |
-|   hrl   |          Horizontal Rule Length           | int  |   72    |
-|  dhrl   |      Dynamic Horizontal Rule Length       | bool |  False  |
-|    r    |                    Row                    | bool |  False  |
-|    p    |                  Padding                  | int  |   20    |
-|    a    |                 Alignment                 | str  | "left"  |
+|   var   |                   name                    |       type        | default |
+| :-----: | :---------------------------------------: | :---------------: | :-----: |
+| content |                  Content                  | str / list / dict |   ""    |
+|   lb    | [Lines Before](#using-new-lines-and-tabs) |        int        |    0    |
+|    t    |     [Tabs](#using-new-lines-and-tabs)     |        int        |    0    |
+|   la    | [Lines After](#using-new-lines-and-tabs)  |        int        |    0    |
+|    c    |          [Color](#using-colors)           |        str        |   ""    |
+|   ip    |      [In Place](#printing-in-place)       |       bool        |  False  |
+|    h    |                  Heading                  |       bool        |  False  |
+|   hr    |              Horizontal Rule              |       bool        |  False  |
+|   hrc   |         Horizontal Rule Character         |        str        |   "-"   |
+|   hrl   |          Horizontal Rule Length           |        int        |   72    |
+|  dhrl   |      Dynamic Horizontal Rule Length       |       bool        |  False  |
+|    r    |                    Row                    |       bool        |  False  |
+|    p    |                  Padding                  |        int        |   20    |
+|    a    |                 Alignment                 |        str        | "left"  |
 
 ## Examples
 
@@ -115,7 +115,9 @@ print(\n\tHello world\n)
 pr("Hello world", c="r")
 ```
 
-> <span style="color:red">Hello world</span>
+```
+Hello word  <-- appears red in terminal
+```
 
 Where:
 
@@ -147,8 +149,26 @@ Accepted colors include:
 
 ### Printing In Place
 
+Printing in place avoids the default Python behavior of printing content on a new line for each call to the print function. Instead, printing in place displays content on the same line, flushing the contents of the previous print statement each time. Such functionality is extremely useful within large loops.
+
 ```
-pr("Hello world", lb=1, t=1, la=1)
+for i in range(101):
+  pr(f"Percent complete: {i}%", ip=True)
+```
+
+```
+Percent complete: {1-100}%
+```
+
+Where:
+
+- ip = boolean indicating whether content should be printed in place `bool`
+
+Equivalent to:
+
+```
+for i in range(101):
+    print(f"\r\033[KPercent complete: {i}%", end="", flush=True)
+```
 
 ---
-```

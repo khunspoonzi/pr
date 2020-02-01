@@ -34,6 +34,8 @@ Run `pip3 install pr`
 |    r    |                [Row](#tabularizing-data)                |       bool        |  False  |
 |    p    |              [Padding](#tabularizing-data)              |        int        |   20    |
 |    a    |             [Alignment](#tabularizing-data)             |        str        | "left"  |
+|   sb    |            [Status Box](#using-status-boxes)            |       bool        |  False  |
+|   st    |           [Status Type](#using-status-boxes)            |        str        |   "i"   |
 
 ---
 
@@ -342,5 +344,43 @@ Accepted alignment options include:
 - Center --> c, center
 
 - Right --> r, right
+
+### Using Status Boxes
+
+```
+pr("Initializing launch sequence...", sb=True, la=1)
+pr("Thrusters activated", t=1, sb=True, st="s")
+pr("Satcom operational", t=1, sb=True, st="s")
+pr("Communications online", t=1, sb=True, st="s")
+pr("Major Tom present", t=1, sb=True, st="f")
+pr("Aborting launch sequence...", lb=1, sb=True)
+```
+
+```
+[i] Initializing launch sequence...
+
+
+	[✔] Thrusters activated
+	[✔] Satcom operational
+	[✔] Communications online
+	[✘] Major Tom present
+
+
+[i] Aborting launch sequence...
+```
+
+Where:
+
+- sb = indicates whether to include a status box before the printed content `bool`
+
+- st = desired status type to display in the status box `str`
+
+Accepted status types include:
+
+- Info --> i, info
+
+- Success --> s, success
+
+- Fail --> f, fail
 
 ---

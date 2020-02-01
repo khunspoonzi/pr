@@ -25,6 +25,7 @@ setuptools.setup(
     description="A high-level shorthand print formatter for Python 3 or above",
     version="v0.0.1",
     long_description=README,
+    long_description_content_type="text/markdown",
     url="https://github.com/khunspoonzi/pr",
     packages=setuptools.find_packages(),
     python_requires=">=3.5",

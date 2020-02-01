@@ -24,7 +24,7 @@ Run `pip3 install pr`
 |    t    |            [Tabs](#using-new-lines-and-tabs)            |        int        |    0    |
 |   la    |        [Lines After](#using-new-lines-and-tabs)         |        int        |    0    |
 |   lb    |        [Lines Before](#using-new-lines-and-tabs)        |        int        |    0    |
-|    c    |                 [Color](#using-colors)                  |        str        |   ""    |
+|    c    |                 [Color](#using-colors)                  |        str        |  None   |
 |   ip    |             [In Place](#printing-in-place)              |       bool        |  False  |
 |    h    |              [Heading](#printing-headings)              |       bool        |  False  |
 |   hr    |      [Horizontal Rule](#printing-horizontal-rules)      |       bool        |  False  |
@@ -34,6 +34,8 @@ Run `pip3 install pr`
 |    r    |                [Row](#tabularizing-data)                |       bool        |  False  |
 |    p    |              [Padding](#tabularizing-data)              |        int        |   20    |
 |    a    |             [Alignment](#tabularizing-data)             |        str        | "left"  |
+
+---
 
 ## Examples
 

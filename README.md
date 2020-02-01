@@ -12,7 +12,7 @@ The objective of pr is to streamline the debugging process by allowing developer
 
 ## Installation
 
-Run `pip3 install pr` in your terminal.
+Run `pip3 install pr`
 
 ---
 
@@ -30,7 +30,7 @@ Run `pip3 install pr` in your terminal.
 |   hr    |      [Horizontal Rule](#printing-horizontal-rules)      |       bool        |  False  |
 |   hrc   | [Horizontal Rule Character](#printing-horizontal-rules) |        str        |   "-"   |
 |   hrl   |  [Horizontal Rule Length](#printing-horizontal-rules)   |        int        |   72    |
-|  dhrl   |  [Dynamic Horizontal Rule Length]](#printing-headings)  |       bool        |  False  |
+|  dhrl   |  [Dynamic Horizontal Rule Length](#printing-headings)   |       bool        |  False  |
 |    r    |                           Row                           |       bool        |  False  |
 |    p    |                         Padding                         |        int        |   20    |
 |    a    |                        Alignment                        |        str        | "left"  |
@@ -273,6 +273,54 @@ print("-" * 72)
 
 ```
 print("=" * 20)
+```
+
+### Tabularizing Data
+
+```
+headers = ["Name", "Age", "Location", "Gender"]
+rows = [
+    ("Joey", 32, "London, UK", "M"),
+    ("Penny", 27, "Beijing, China", "F"),
+    ("Caroline", 30, "Austin, USA", "F"),
+    ("Diego", 24, "Lima, Peru", "M"),
+    ("Donny", 29, "La Linea de la Concepcion, Spain", "M")
+]
+```
+
+```
+pr(headers, r=True, h=True)
+for row in rows:
+    pr(row, r=True)
+```
+
+```
+Name                 | Age                  | Location             | Gender
+----------------------------------------------------------------------------------------
+Joey                 | 32                   | London, UK           | M
+Penny                | 27                   | Beijing, China       | F
+Caroline             | 30                   | Austin, USA          | F
+Diego                | 24                   | Lima, Peru           | M
+Donny                | 29                   | La Linea de la Con   | M
+```
+
+```
+padding = 25
+pr(headers, r=True, h=True, hrc="=", p=padding, a="c")
+for row in rows:
+    pr(row, r=True, p=padding)
+```
+
+```
+Name                      |            Age            |         Location          |          Gender
+============================================================================================================
+Joey                      | 32                        | London, UK                | M
+Penny                     | 27                        | Beijing, China            | F
+Caroline                  | 30                        | Austin, USA               | F
+Diego                     | 24                        | Lima, Peru                | M
+Donny                     | 29                        | La Linea de la Concepci   | M
+​
+
 ```
 
 ---

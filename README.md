@@ -21,12 +21,12 @@ Run `pip3 install pr` in your terminal.
 |   var   |                   name                    |       type        | default |
 | :-----: | :---------------------------------------: | :---------------: | :-----: |
 | content |                  Content                  | str / list / dict |   ""    |
-|   lb    | [Lines Before](#using-new-lines-and-tabs) |        int        |    0    |
 |    t    |     [Tabs](#using-new-lines-and-tabs)     |        int        |    0    |
 |   la    | [Lines After](#using-new-lines-and-tabs)  |        int        |    0    |
+|   lb    | [Lines Before](#using-new-lines-and-tabs) |        int        |    0    |
 |    c    |          [Color](#using-colors)           |        str        |   ""    |
 |   ip    |      [In Place](#printing-in-place)       |       bool        |  False  |
-|    h    |                  Heading                  |       bool        |  False  |
+|    h    |       [Heading](#printing-headings)       |       bool        |  False  |
 |   hr    |              Horizontal Rule              |       bool        |  False  |
 |   hrc   |         Horizontal Rule Character         |        str        |   "-"   |
 |   hrl   |          Horizontal Rule Length           |        int        |   72    |
@@ -80,7 +80,7 @@ print("")
 ### Using New Lines and Tabs
 
 ```
-pr("Hello world", lb=1, t=1, la=1)
+pr("Hello world", t=1, la=1, lb=1)
 ```
 
 or
@@ -97,11 +97,11 @@ pr("Hello world", 1, 1, 1)
 
 Where:
 
-- lb = number of lines before the printed string `int`
-
 - t = number of tabs before the printed string `int`
 
 - la = number of lines after the printed string `int`
+
+- lb = number of lines before the printed string `int`
 
 Equivalent to:
 
@@ -162,13 +162,81 @@ Percent complete: {1-100}%
 
 Where:
 
-- ip = boolean indicating whether content should be printed in place `bool`
+- ip = indicates whether content should be printed in place `bool`
 
 Equivalent to:
 
 ```
 for i in range(101):
     print(f"\r\033[KPercent complete: {i}%", end="", flush=True)
+```
+
+### Printing Headings
+
+```
+pr("Hello world", h=True)
+```
+
+```
+------------------------------------------------------------------------
+Hello world
+------------------------------------------------------------------------
+```
+
+```
+pr("Hello world", h=True, hrl=20)
+```
+
+```
+--------------------
+Hello world
+--------------------
+```
+
+```
+pr("Hello world", h=True, dhrl=True)
+pr("Hello world, goodbye Mars", h=True, dhrl=True)
+```
+
+```
+------------
+Hello world
+------------
+
+--------------------------
+Hello world, goodbye Mars
+--------------------------
+```
+
+Where:
+
+- h = indicates whether content should be printed as a heading `bool`
+
+- hrl = desired length of horizontal rule above and below the heading string `int`
+
+- dhrl indicates whether the length of the horizontal rule above and below the heading string should be dynamic, i.e. match the length of the content `bool`
+
+Equivalent to:
+
+```
+print("-" * 72)
+print("Hello world")
+print("-" * 72)
+```
+
+```
+print("-" * 15)
+print("Hello world")
+print("-" * 15)
+```
+
+```
+content = "Hello world"
+length = len(content) + 1
+
+print("-" * length)
+print(content)
+print("-" * length)
 ```
 
 ---

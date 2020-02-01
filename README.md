@@ -6,7 +6,7 @@ A high-level shorthand print formatter for Python 3 or above
 
 ## Overview
 
-The objective of pr is to streamline the debugging process by allowing developers...
+The objective of pr is to streamline the debugging process by allowing developers to implement complex print formatting with minimal effort.
 
 ---
 

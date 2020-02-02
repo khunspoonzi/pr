@@ -51,18 +51,22 @@ from pr import pr
 
 ```
 pr("Hello world")
-
 ```
 
 ```
 Hello world
 ```
 
+Equivalent to:
+
+```
+print("Hello world")
+```
+
 ### Printing an Empty String
 
 ```
 pr()
-
 ```
 
 ```
@@ -382,5 +386,43 @@ Accepted status types include:
 - Success --> s, success
 
 - Fail --> f, fail
+
+### Pretty Printing Data
+
+Pretty printing is enabled by default when a structure such as a dictionary, list, or tuple is passed into pr. This will print the data over multiple lines if necessary rather than attempt to print everything on a single line as the default print statement will do.
+
+```
+l = [
+    "eggs",
+    "bacon",
+    "cucumbers",
+    "bottled water",
+    "fresh straberries",
+    "fine cheese",
+    "pasta",
+]
+```
+
+```
+pr(l)
+```
+
+```
+['eggs',
+ 'bacon',
+ 'cucumbers',
+ 'bottled water',
+ 'fresh straberries',
+ 'fine cheese',
+ 'pasta']
+```
+
+Equivalent to:
+
+```
+from pprint import pprint
+
+pprint(l)
+```
 
 ---

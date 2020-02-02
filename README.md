@@ -20,7 +20,7 @@ Run `pip3 install pr`
 
 |   var   |                          name                           |           type            | default |
 | :-----: | :-----------------------------------------------------: | :-----------------------: | :-----: |
-| content |                         Content                         | str / list / dict / tuple |   ""    |
+| content |              [Content](#printing-a-string)              | str / list / dict / tuple |   ""    |
 |    t    |            [Tabs](#using-new-lines-and-tabs)            |            int            |    0    |
 |   la    |        [Lines After](#using-new-lines-and-tabs)         |            int            |    0    |
 |   lb    |        [Lines Before](#using-new-lines-and-tabs)        |            int            |    0    |

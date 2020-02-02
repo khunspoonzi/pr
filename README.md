@@ -32,10 +32,10 @@ Run `pip3 install pr`
 |   hrc   | [Horizontal Rule Character](#printing-horizontal-rules) |            str            |   "-"   |
 |   hrl   |  [Horizontal Rule Length](#printing-horizontal-rules)   |            int            |   72    |
 |  dhrl   |  [Dynamic Horizontal Rule Length](#printing-headings)   |           bool            |  False  |
-|    r    |                [Row](#tabularizing-data)                |           bool            |  False  |
-|   rl    |             [Row List](#tabularizing-data)              |           bool            |  False  |
-|    p    |              [Padding](#tabularizing-data)              |            int            |   20    |
-|    a    |             [Alignment](#tabularizing-data)             |            str            | "left"  |
+|    r    |                 [Row](#tabulating-data)                 |           bool            |  False  |
+|   rl    |              [Row List](#tabulating-data)               |           bool            |  False  |
+|    p    |               [Padding](#tabulating-data)               |            int            |   20    |
+|    a    |              [Alignment](#tabulating-data)              |            str            | "left"  |
 |   sb    |            [Status Box](#using-status-boxes)            |           bool            |  False  |
 |   st    |           [Status Type](#using-status-boxes)            |            str            |   "i"   |
 
@@ -312,7 +312,7 @@ print("-" * 72)
 print("=" * 20)
 ```
 
-### Tabularizing Data
+### Tabulating Data
 
 ```
 header = ["Name", "Age", "Location", "Gender"]

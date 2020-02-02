@@ -405,6 +405,10 @@ Accepted alignment options include:
 
 - Right --> r, right
 
+Remarks:
+
+- Avoid using colors with tabulated data for the time being as Python's string formatter does not play well with with ANSI color codes
+
 ### Using Status Boxes
 
 ```

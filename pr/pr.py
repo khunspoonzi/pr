@@ -134,7 +134,7 @@ def pr(
                     if color:
 
                         # Add color to each row item
-                        content = [f"{color}{item}{RESET}" for item in row]
+                        row = [f"{color}{item}{RESET}" for item in row]
 
                     # Initialize table row dict
                     trow_dict = {

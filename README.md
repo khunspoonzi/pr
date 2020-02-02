@@ -24,6 +24,8 @@ Run `pip3 install pr`
 |    t    |            [Tabs](#using-new-lines-and-tabs)            |            int            |    0    |
 |   la    |        [Lines After](#using-new-lines-and-tabs)         |            int            |    0    |
 |   lb    |        [Lines Before](#using-new-lines-and-tabs)        |            int            |    0    |
+|    b    |                [Bullet](#using-bullets)                 |           bool            |  False  |
+|   bc    |           [Bullet Character](#using-bullets)            |            str            |   "•"   |
 |    c    |                 [Color](#using-colors)                  |            str            |  None   |
 |   cs    |            [Color Span](#using-color-spans)             |           bool            |  False  |
 |   ip    |             [In Place](#printing-in-place)              |           bool            |  False  |
@@ -117,6 +119,68 @@ Equivalent to:
 
 ```
 print(\n\tHello world\n)
+```
+
+### Using Bullets
+
+```
+shopping_list = [
+    "eggs",
+    "bacon",
+    "cucumbers",
+    "bottled water",
+    "fresh straberries",
+    "fine cheese",
+    "pasta",
+]
+```
+
+```
+for item in shopping_list:
+    pr(item, b=True)
+```
+
+```
+• eggs
+• bacon
+• cucumbers
+• bottled water
+• fresh straberries
+• fine cheese
+• pasta
+```
+
+```
+for item in shopping_list:
+  pr(item, b=True, bc="@")
+```
+
+```
+@ eggs
+@ bacon
+@ cucumbers
+@ bottled water
+@ fresh straberries
+@ fine cheese
+@ pasta
+```
+
+Where:
+
+- c = indicates whether to add a bullet point before the content `bool`
+
+- bc = desired bullet character `str`
+
+Equivalent to:
+
+```
+for item in shopping_list:
+  print(f"{•} {item}")
+```
+
+```
+for item in shopping_list:
+  print(f"{@} {item}")
 ```
 
 ### Using Colors

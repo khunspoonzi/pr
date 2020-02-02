@@ -54,6 +54,8 @@ def pr(
     la: int = 0,  # lines after
     lb: int = 0,  # lines before
     # Unordered arguments
+    b: bool = False,  # bullet
+    bc: str = "\u2022",  # bullet character
     c: str = None,  # color
     cs: bool = False,  # color span
     ip: bool = False,  # in place
@@ -250,8 +252,14 @@ def pr(
         # Add color to string
         content = color + content + RESET
 
+    # Check if bullet argument is True
+    if b is True:
+
+        # Add bullet character to content
+        content = f"{bc} {content}"
+
     # Check if status box argument is True
-    if sb is True:
+    elif sb is True:
 
         # Initialize status box
         status_box = "[i]"

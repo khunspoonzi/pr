@@ -25,6 +25,7 @@ Run `pip3 install pr`
 |   la    |        [Lines After](#using-new-lines-and-tabs)         |        int        |    0    |
 |   lb    |        [Lines Before](#using-new-lines-and-tabs)        |        int        |    0    |
 |    c    |                 [Color](#using-colors)                  |        str        |  None   |
+|   cs    |            [Color Span](#using-color-spans)             |       bool        |  False  |
 |   ip    |             [In Place](#printing-in-place)              |       bool        |  False  |
 |    h    |              [Heading](#printing-headings)              |       bool        |  False  |
 |   hr    |      [Horizontal Rule](#printing-horizontal-rules)      |       bool        |  False  |
@@ -154,6 +155,29 @@ Accepted colors include:
 - White --> w, white
 
 - Yellow --> y, yellow
+
+### Using Color Spans
+
+```
+color_span = [
+    "Roses are ",
+    ("red", "r"),
+    " and violets are ",
+    ("blue", "bu")
+]
+
+pr(color_span, cs=True)
+```
+
+```
+Roses are [red] and violets are [blue]  <--  words in square brackets appear in their respective colors
+```
+
+Equivalent to:
+
+```
+print(Roses are \u001b[31mred\u001b[0m and violets are \u001b[34mblue\u001b[0m)
+```
 
 ### Printing In Place
 

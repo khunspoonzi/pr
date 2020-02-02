@@ -55,6 +55,7 @@ def pr(
     lb: int = 0,  # lines before
     # Unordered arguments
     c: str = None,  # color
+    cs: bool = False,  # color span
     ip: bool = False,  # in place
     h: bool = False,  # heading
     hr: bool = False,  # horizontal rule
@@ -114,37 +115,101 @@ def pr(
     elif type(content) in [dict, list, tuple]:
 
         # Handle case of table row
-        if type(content) in [list, tuple] and r is True:
+        if type(content) in [list, tuple]:
 
-            # Check if ANSI color exists
-            if color:
+            # Check if row is True
+            if r is True:
 
-                # Add color to each row item
-                content = [f"{color}{item}{RESET}" for item in content]
+                # Check if ANSI color exists
+                if color:
 
-            # Initialize table row dict
-            trow_dict = {
-                "row": content,
-                "padding": p,
-                "alignment": a,
-            }
+                    # Add color to each row item
+                    content = [f"{color}{item}{RESET}" for item in content]
 
-            # Handle case of table heading
-            if h is True:
+                # Initialize table row dict
+                trow_dict = {
+                    "row": content,
+                    "padding": p,
+                    "alignment": a,
+                }
 
-                # Add header boolean to table row dict
-                trow_dict["header"] = True
+                # Handle case of table heading
+                if h is True:
 
-                # Add horizontal rule character to table row dict
-                trow_dict["horizontal_rule_character"] = hrc
+                    # Add header boolean to table row dict
+                    trow_dict["header"] = True
 
-            # Print table row and return
-            trow(**trow_dict)
+                    # Add horizontal rule character to table row dict
+                    trow_dict["horizontal_rule_character"] = hrc
 
-            # Print lines after and return
-            if lines_after:
-                print(lines_after)
-            return
+                # Print table row and return
+                trow(**trow_dict)
+
+                # Print lines after and return
+                if lines_after:
+                    print(lines_after)
+                return
+
+            # Otherwise chec if color span is True
+            elif cs is True:
+
+                # Initialize string to print
+                to_print = ""
+
+                # Iterate over content
+                for item in content:
+
+                    # Get item type
+                    item_type = type(item)
+
+                    # Check if item is a string
+                    if item_type == str:
+
+                        # Append to string to print
+                        to_print += item
+
+                    # Otherwise check if item is a list or tuple
+                    elif item_type in [list, tuple]:
+
+                        # Ensure that the length of the item is 2
+                        if len(item) != 2:
+
+                            # Raise exception
+                            raise Exception(
+                                "Format of color span should be: ('my string', 'red')"
+                            )
+
+                        # Unpack string and color
+                        string, color = item
+
+                        # Lowercase color
+                        color = color.lower()
+
+                        # Get ANSI color
+                        color = colors.get(color)
+
+                        # Handle case of existint ANSI color
+                        if color:
+
+                            # Wrap string in color
+                            string = color + string + RESET
+
+                        # Append to string to print
+                        to_print += string
+
+                    # Handle all other types
+                    else:
+
+                        # Raise exception
+                        raise Exception(f"Unhandled type in color span: {type(item)}")
+
+                # Print color span content
+                print(to_print)
+
+                # Print lines after and return
+                if lines_after:
+                    print(lines_after)
+                return
 
         # Pretty print the content
         pprint(content)

@@ -41,6 +41,10 @@ Run `pip3 install pr`
 |   sb    |            [Status Box](#using-status-boxes)            |           bool            |  False  |
 |   st    |           [Status Type](#using-status-boxes)            |            str            |   "i"   |
 
+**See also:**
+
+- [Pretty Printing](#pretty-printing-data)
+
 ---
 
 ## Examples

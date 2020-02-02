@@ -18,25 +18,25 @@ Run `pip3 install pr`
 
 ## Arguments
 
-|   var   |                          name                           |       type        | default |
-| :-----: | :-----------------------------------------------------: | :---------------: | :-----: |
-| content |                         Content                         | str / list / dict |   ""    |
-|    t    |            [Tabs](#using-new-lines-and-tabs)            |        int        |    0    |
-|   la    |        [Lines After](#using-new-lines-and-tabs)         |        int        |    0    |
-|   lb    |        [Lines Before](#using-new-lines-and-tabs)        |        int        |    0    |
-|    c    |                 [Color](#using-colors)                  |        str        |  None   |
-|   cs    |            [Color Span](#using-color-spans)             |       bool        |  False  |
-|   ip    |             [In Place](#printing-in-place)              |       bool        |  False  |
-|    h    |              [Heading](#printing-headings)              |       bool        |  False  |
-|   hr    |      [Horizontal Rule](#printing-horizontal-rules)      |       bool        |  False  |
-|   hrc   | [Horizontal Rule Character](#printing-horizontal-rules) |        str        |   "-"   |
-|   hrl   |  [Horizontal Rule Length](#printing-horizontal-rules)   |        int        |   72    |
-|  dhrl   |  [Dynamic Horizontal Rule Length](#printing-headings)   |       bool        |  False  |
-|    r    |                [Row](#tabularizing-data)                |       bool        |  False  |
-|    p    |              [Padding](#tabularizing-data)              |        int        |   20    |
-|    a    |             [Alignment](#tabularizing-data)             |        str        | "left"  |
-|   sb    |            [Status Box](#using-status-boxes)            |       bool        |  False  |
-|   st    |           [Status Type](#using-status-boxes)            |        str        |   "i"   |
+|   var   |                          name                           |           type            | default |
+| :-----: | :-----------------------------------------------------: | :-----------------------: | :-----: |
+| content |                         Content                         | str / list / dict / tuple |   ""    |
+|    t    |            [Tabs](#using-new-lines-and-tabs)            |            int            |    0    |
+|   la    |        [Lines After](#using-new-lines-and-tabs)         |            int            |    0    |
+|   lb    |        [Lines Before](#using-new-lines-and-tabs)        |            int            |    0    |
+|    c    |                 [Color](#using-colors)                  |            str            |  None   |
+|   cs    |            [Color Span](#using-color-spans)             |           bool            |  False  |
+|   ip    |             [In Place](#printing-in-place)              |           bool            |  False  |
+|    h    |              [Heading](#printing-headings)              |           bool            |  False  |
+|   hr    |      [Horizontal Rule](#printing-horizontal-rules)      |           bool            |  False  |
+|   hrc   | [Horizontal Rule Character](#printing-horizontal-rules) |            str            |   "-"   |
+|   hrl   |  [Horizontal Rule Length](#printing-horizontal-rules)   |            int            |   72    |
+|  dhrl   |  [Dynamic Horizontal Rule Length](#printing-headings)   |           bool            |  False  |
+|    r    |                [Row](#tabularizing-data)                |           bool            |  False  |
+|    p    |              [Padding](#tabularizing-data)              |            int            |   20    |
+|    a    |             [Alignment](#tabularizing-data)             |            str            | "left"  |
+|   sb    |            [Status Box](#using-status-boxes)            |           bool            |  False  |
+|   st    |           [Status Type](#using-status-boxes)            |            str            |   "i"   |
 
 ---
 
@@ -173,10 +173,14 @@ pr(color_span, cs=True)
 Roses are [red] and violets are [blue]  <--  words in square brackets appear in their respective colors
 ```
 
+Where:
+
+- c = indicates whether to treat the iterable as spans of colored text `bool`
+
 Equivalent to:
 
 ```
-print(Roses are \u001b[31mred\u001b[0m and violets are \u001b[34mblue\u001b[0m)
+print("Roses are \u001b[31mred\u001b[0m and violets are \u001b[34mblue\u001b[0m")
 ```
 
 ### Printing In Place
@@ -416,29 +420,27 @@ Accepted status types include:
 Pretty printing is enabled by default when a structure such as a dictionary, list, or tuple is passed into pr. This will print the data over multiple lines if necessary rather than attempt to print everything on a single line as the default print statement will do.
 
 ```
-l = [
-    "eggs",
-    "bacon",
-    "cucumbers",
-    "bottled water",
-    "fresh straberries",
-    "fine cheese",
-    "pasta",
-]
+d = {
+    "personal_info": {"name": "Jose", "age": "23", "location": "Christchurch, New Zealand", "gender": "M"},
+    "hobbies": ["running", "swimming", "reading", "photography", "birdwatching", "surfing"]
+}
 ```
 
 ```
-pr(l)
+pr(d)
 ```
 
 ```
-['eggs',
- 'bacon',
- 'cucumbers',
- 'bottled water',
- 'fresh straberries',
- 'fine cheese',
- 'pasta']
+{'hobbies': ['running',
+             'swimming',
+             'reading',
+             'photography',
+             'birdwatching',
+             'surfing'],
+ 'personal_info': {'age': '23',
+                   'gender': 'M',
+                   'location': 'Christchurch, New Zealand',
+                   'name': 'Jose'}}
 ```
 
 Equivalent to:
@@ -446,7 +448,7 @@ Equivalent to:
 ```
 from pprint import pprint
 
-pprint(l)
+pprint(d)
 ```
 
 ---

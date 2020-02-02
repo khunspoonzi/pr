@@ -128,7 +128,7 @@ def pr(
                     content = [content]
 
                 # Iterate over rows
-                for row in content:
+                for i, row in enumerate(content):
 
                     # Check if ANSI color exists
                     if color:
@@ -146,11 +146,26 @@ def pr(
                     # Handle case of table heading
                     if h is True:
 
-                        # Add header boolean to table row dict
-                        trow_dict["header"] = True
+                        # Handle case of row list
+                        if rl is True:
 
-                        # Add horizontal rule character to table row dict
-                        trow_dict["horizontal_rule_character"] = hrc
+                            # Only add horzontal rule for first row
+                            if i == 0:
+
+                                # Add header boolean to table row dict
+                                trow_dict["header"] = True
+
+                                # Add horizontal rule character to table row dict
+                                trow_dict["horizontal_rule_character"] = hrc
+
+                        # Otherwise handle case of single row heading
+                        else:
+
+                            # Add header boolean to table row dict
+                            trow_dict["header"] = True
+
+                            # Add horizontal rule character to table row dict
+                            trow_dict["horizontal_rule_character"] = hrc
 
                     # Print table row and return
                     trow(**trow_dict)

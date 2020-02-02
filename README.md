@@ -33,6 +33,7 @@ Run `pip3 install pr`
 |   hrl   |  [Horizontal Rule Length](#printing-horizontal-rules)   |            int            |   72    |
 |  dhrl   |  [Dynamic Horizontal Rule Length](#printing-headings)   |           bool            |  False  |
 |    r    |                [Row](#tabularizing-data)                |           bool            |  False  |
+|   rl    |             [Row List](#tabularizing-data)              |           bool            |  False  |
 |    p    |              [Padding](#tabularizing-data)              |            int            |   20    |
 |    a    |             [Alignment](#tabularizing-data)             |            str            | "left"  |
 |   sb    |            [Status Box](#using-status-boxes)            |           bool            |  False  |
@@ -314,7 +315,7 @@ print("=" * 20)
 ### Tabularizing Data
 
 ```
-headers = ["Name", "Age", "Location", "Gender"]
+header = ["Name", "Age", "Location", "Gender"]
 rows = [
     ("Joey", 32, "London, UK", "M"),
     ("Penny", 27, "Beijing, China", "F"),
@@ -325,9 +326,24 @@ rows = [
 ```
 
 ```
-pr(headers, r=True, h=True)
+pr(header, r=True, h=True)
 for row in rows:
     pr(row, r=True)
+```
+
+or
+
+```
+pr(header, r=True, h=True)
+pr(rows, rl=True)
+```
+
+or
+
+```
+header_and_rows = [header] + rows
+
+pr(header_and_rows, rl=True, h=True)
 ```
 
 ```
@@ -342,9 +358,19 @@ Donny                | 29                   | La Linea de la Con   | M
 
 ```
 padding = 25
-pr(headers, r=True, h=True, hrc="=", p=padding, a="c")
+
+pr(header, r=True, h=True, hrc="=", p=padding, a="c")
 for row in rows:
     pr(row, r=True, p=padding)
+```
+
+or
+
+```
+padding = 25
+
+pr(header, r=True, h=True, hrc="=", p=padding, a="c")
+pr(rows, rl=True, p=padding)
 ```
 
 ```
@@ -360,6 +386,8 @@ Donny                     | 29                        | La Linea de la Concepci 
 Where:
 
 - r = indicates whether the content should be treated as a table row `bool`
+
+- rl = indicates whether the content should be treated as a list of rows `bool`
 
 - h = indicates whether the content should be treated as a table header, i.e. a row with a horizontal rule underneath `bool`
 

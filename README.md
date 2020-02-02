@@ -171,7 +171,7 @@ for item in shopping_list:
 
 Where:
 
-- c = indicates whether to add a bullet point before the content `bool`
+- b = indicates whether to add a bullet point before the content `bool`
 
 - bc = desired bullet character `str`
 

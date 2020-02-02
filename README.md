@@ -229,9 +229,9 @@ print("-" * 72)
 ```
 
 ```
-print("-" * 15)
+print("-" * 20)
 print("Hello world")
-print("-" * 15)
+print("-" * 20)
 ```
 
 ```
@@ -316,7 +316,7 @@ for row in rows:
 ```
 
 ```
-Name                      |            Age            |         Location          |          Gender
+           Name           |            Age            |         Location          |          Gender
 ============================================================================================================
 Joey                      | 32                        | London, UK                | M
 Penny                     | 27                        | Beijing, China            | F

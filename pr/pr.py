@@ -63,6 +63,7 @@ def pr(
     hrl: int = 72,  # horizontal rule length
     dhrl: bool = False,  # dynamic horizontal rule length
     r: bool = False,  # row
+    rl: bool = False,  # row list
     p: int = 20,  # padding
     a: str = "left",  # alignment
     sb: bool = False,  # status box
@@ -117,33 +118,42 @@ def pr(
         # Handle case of table row
         if type(content) in [list, tuple]:
 
-            # Check if row is True
-            if r is True:
+            # Check if row or row list is True
+            if r is True or rl is True:
 
-                # Check if ANSI color exists
-                if color:
+                # Check if only a single row
+                if r is True and rl is False:
 
-                    # Add color to each row item
-                    content = [f"{color}{item}{RESET}" for item in content]
+                    # Reformat content into a single-element list
+                    content = [content]
 
-                # Initialize table row dict
-                trow_dict = {
-                    "row": content,
-                    "padding": p,
-                    "alignment": a,
-                }
+                # Iterate over rows
+                for row in content:
 
-                # Handle case of table heading
-                if h is True:
+                    # Check if ANSI color exists
+                    if color:
 
-                    # Add header boolean to table row dict
-                    trow_dict["header"] = True
+                        # Add color to each row item
+                        content = [f"{color}{item}{RESET}" for item in row]
 
-                    # Add horizontal rule character to table row dict
-                    trow_dict["horizontal_rule_character"] = hrc
+                    # Initialize table row dict
+                    trow_dict = {
+                        "row": row,
+                        "padding": p,
+                        "alignment": a,
+                    }
 
-                # Print table row and return
-                trow(**trow_dict)
+                    # Handle case of table heading
+                    if h is True:
+
+                        # Add header boolean to table row dict
+                        trow_dict["header"] = True
+
+                        # Add horizontal rule character to table row dict
+                        trow_dict["horizontal_rule_character"] = hrc
+
+                    # Print table row and return
+                    trow(**trow_dict)
 
                 # Print lines after and return
                 if lines_after:

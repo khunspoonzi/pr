@@ -40,6 +40,7 @@ Run `pip3 install pr`
 |    a    |              [Alignment](#tabulating-data)              |            str            | "left"  |
 |   sb    |            [Status Box](#using-status-boxes)            |           bool            |  False  |
 |   st    |           [Status Type](#using-status-boxes)            |            str            |   "i"   |
+|  debug  |                  [Debug](#using-debug)                  |           bool            |  True   |
 
 **See also:**
 
@@ -550,5 +551,9 @@ from pprint import pprint
 
 pprint(d)
 ```
+
+### Using Debug
+
+README pending...
 
 ---

@@ -70,8 +70,13 @@ def pr(
     a: str = "left",  # alignment
     sb: bool = False,  # status box
     st: str = "info",  # status type
+    debug=True,  # debug
 ) -> None:
     """ Extends the existing python print function """
+
+    # Return if debug is True
+    if debug is False:
+        return
 
     # Construct lines before
     lines_before = "\n" * lb

@@ -70,13 +70,19 @@ def pr(
     a: str = "left",  # alignment
     sb: bool = False,  # status box
     st: str = "info",  # status type
-    debug=True,  # debug
+    dbg=True,  # debug
 ) -> None:
     """ Extends the existing python print function """
 
     # Return if debug is True
-    if debug is False:
+    if dbg is False:
         return
+
+    # Check if horizontal rule length is default
+    if hrl == 72:
+
+        # Shorten horizontal rule length by tabs
+        hrl = hrl - (t * 4)
 
     # Construct lines before
     lines_before = "\n" * lb

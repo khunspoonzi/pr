@@ -23,7 +23,7 @@ setuptools.setup(
     name="pr",
     license="MIT",
     description="A high-level shorthand print formatter for Python 3 or above",
-    version="v0.3.2",
+    version="v0.4.3",
     long_description=README,
     long_description_content_type="text/markdown",
     url="https://github.com/khunspoonzi/pr",

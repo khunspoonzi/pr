@@ -230,7 +230,7 @@ def pr(
                         if color:
 
                             # Wrap string in color
-                            string = color + str(string) + RESET
+                            string = f"{color}{string}{RESET}"
 
                         # Append to string to print
                         to_print += string
@@ -261,7 +261,7 @@ def pr(
     if color:
 
         # Add color to string
-        content = color + str(content) + RESET
+        content = f"{color}{content}{RESET}"
 
     # Check if bullet argument is True
     if b is True:
@@ -294,7 +294,7 @@ def pr(
     tabs = "\t" * t
 
     # Append tabs to string
-    content = tabs + content
+    content = f"{tabs}{content}"
 
     # Case of heading
     if h is True:

@@ -230,7 +230,7 @@ def pr(
                         if color:
 
                             # Wrap string in color
-                            string = color + string + RESET
+                            string = color + str(string) + RESET
 
                         # Append to string to print
                         to_print += string
@@ -261,7 +261,7 @@ def pr(
     if color:
 
         # Add color to string
-        content = color + content + RESET
+        content = color + str(content) + RESET
 
     # Check if bullet argument is True
     if b is True:

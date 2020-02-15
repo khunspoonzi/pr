@@ -24,6 +24,7 @@ Run `pip3 install pr`
 |    t    |            [Tabs](#using-new-lines-and-tabs)            |            int            |    0    |
 |   la    |        [Lines After](#using-new-lines-and-tabs)         |            int            |    0    |
 |   lb    |        [Lines Before](#using-new-lines-and-tabs)        |            int            |    0    |
+|   tl    |         [Tab Length](#using-new-lines-and-tabs)         |            int            |    4    |
 |    b    |                [Bullet](#using-bullets)                 |           bool            |  False  |
 |   bc    |           [Bullet Character](#using-bullets)            |            str            |   "•"   |
 |    c    |                 [Color](#using-colors)                  |            str            |  None   |
@@ -112,6 +113,18 @@ pr("Hello world", 1, 1, 1)
 
 ```
 
+You may also specify custom tab lengths with the tl argument.
+
+```
+pr("Hello world", t=1)
+pr("Hello world", t=1, tl=8)
+```
+
+```
+    Hello world
+        Hello world
+```
+
 Where:
 
 - t = number of tabs before the printed string `int`
@@ -119,6 +132,8 @@ Where:
 - la = number of lines after the printed string `int`
 
 - lb = number of lines before the printed string `int`
+
+- tl = number of spaces in a single tab `int`
 
 Equivalent to:
 
@@ -554,6 +569,53 @@ pprint(d)
 
 ### Using Debug
 
-README pending...
+The use case of the debug argument is rather interesting here. In short, if debug is set to False, the pr function will return immediately without printing any output passed into it. So why have this feature at all? Here's an example.
+
+Let's say we have some function that we intend to run in a production environment, where the complexity of the function requires extensive debugging in a local environment. You might introduce a debug argument in your function that will tell it to print debug messages only when debug is set to True, i.e. in the local environment. The function might look something like this:
+
+```
+def my_func(num, dbg=False):
+  """ Adds 5 and squares the result """
+
+  # Add 5 to num
+  num = num + 5
+
+  # Print debug message
+  if dbg is True:
+    print("Added 5 to num!")
+
+  # Square the result
+  num = num * num
+
+  # Print debug message
+  if dbg is True:
+    print("Squared num!")
+
+  # Return the squared result
+  return num
+
+```
+
+Clearly, it becomes a tedious process to implement an if statement at every point in your function where would like to print a debug message. Using pr, the same can be accomplished in a single line to save space and improve readability.
+
+```
+def my_func(num, dbg=False):
+  """ Adds 5 and squares the result """
+
+  # Add 5 to num
+  num = num + 5
+
+  # Print debug message
+  pr("Added 5 to num!", dbg=dbg)
+
+  # Square the result
+  num = num * num
+
+  # Print debug message
+  pr("Squared num!", dbg=dbg)
+
+  # Return the squared result
+  return num
+```
 
 ---

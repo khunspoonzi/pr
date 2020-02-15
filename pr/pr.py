@@ -54,6 +54,7 @@ def pr(
     la: int = 0,  # lines after
     lb: int = 0,  # lines before
     # Unordered arguments
+    tl=4,  # tab length
     b: bool = False,  # bullet
     bc: str = "\u2022",  # bullet character
     c: str = None,  # color
@@ -291,7 +292,7 @@ def pr(
         content = f"{status_box} {content}"
 
     # Construct tabs
-    tabs = "\t" * t
+    tabs = " " * tl * t
 
     # Append tabs to string
     content = f"{tabs}{content}"

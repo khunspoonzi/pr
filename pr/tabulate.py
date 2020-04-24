@@ -62,7 +62,7 @@ def trow(
 
     # Get horizontal rule
     horizontal_rule = horizontal_rule_character * (
-        padding * row_length + (row_length * 2)
+        padding * row_length + (row_length * 2) + 1
     )
 
     # Stringify row
